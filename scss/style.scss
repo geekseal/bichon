@@ -1,0 +1,183 @@
+/* animation */
+@keyframes sceneRotate {
+  to {
+	  transform: rotateY(360deg);
+  }
+}
+
+/* setting */
+:root {
+  --pri: white;
+  --sec: #0a0a11;
+  --boxColor: #FFF7;
+  --rotateSpeed: 10s;
+  font-size: 100px;
+}
+
+/* reset */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* layout */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 14em;
+  perspective-origin: 50% calc(50% - 4em);
+}
+
+.scene {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: sceneRotate var(--rotateSpeed) linear;
+}
+
+.cube-bichon {
+  width: 4.2rem;
+  height: 4rem;
+
+  position: absolute;
+  top: -2rem;
+  left: -2.1rem;
+
+  .cube.left, .cube.right, .cube.back, .cube.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF7;
+    box-shadow: 0 0 0.5em #000a inset;
+  }
+  
+  transform-style: preserve-3d;
+
+  .cube.front { transform: translateZ(2.1rem); }
+  .cube.right { transform: rotateY(90deg) translateZ(2.1rem); }
+  .cube.back { transform: rotateY(180deg) translateZ(2.1rem); }
+  .cube.left { transform: rotateY(270deg) translateZ(2.1rem); }
+
+  .cube.top {
+    position: absolute;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: var(--boxColor);
+    transform: translateY(-50%) rotateX(90deg);
+    box-shadow: 0 0 0.5em #000a inset;
+  }
+  .cube.bottom {
+    position: absolute;
+    width: 4.2rem;
+    height: 4.2rem;
+    background: #FFF5;
+    bottom: 0;
+    transform: translateY(50%) rotateX(270deg);
+    box-shadow: 0 0 0.5em #000;
+  }
+}
+
+.floor {
+  width: 20rem;
+  height: 20rem;
+  background-image:
+    radial-gradient(#0000, #000 75%),
+    repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+  background-size: 100%, 1rem 1rem;
+
+  position: absolute;
+  transform:
+    translate(-50%, -50%)
+    rotateX(90deg);
+  top: 2em;
+}
+
+/* design */
+.face {
+  .ear {
+    position: absolute;
+    top: 0;
+    width: 1.34rem;
+    height: 3rem;
+    background-color: var(--pri);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  .ear.left {
+    left: 0;
+    border-radius: 43% 57% 100% 0% / 37% 33% 67% 63%;
+  }
+  .ear.right {
+    right: 0;
+    border-radius: 43% 57% 0% 100% / 37% 33% 67% 63%;
+  }
+
+  .eye {
+    position: absolute;
+    top: 2.2rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: black;
+    .white-eye {
+      position: absolute;
+      width: 8px;
+      height: 11px;
+      background-color: var(--pri);
+    }
+    .white-eye.left {
+      top: 6px;
+      left: 6px;
+      transform: rotate(20deg);
+      border-radius: 40% 30% 40% 50%;
+    }
+    .white-eye.right {
+      top: 6px;
+      left: 5px;
+      transform: rotate(30deg);
+      border-radius: 45% 45% 50% 50%;
+    }
+  }
+  .eye.left {
+    left: 140px;
+  }
+  .eye.right {
+    right: 140px;
+  }
+
+  .nose {
+    position: absolute;
+    top: 286px;
+    left: 190px;
+    width: 40px;
+    height: 30px;
+    background-color: black;
+    border-radius: 43% 57% 49% 51% / 37% 33% 67% 63%;
+  }
+  
+  .mouth {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    top: 304px;
+    border: 7px solid var(--sec);
+    border-radius: 35%;
+  }
+  .mouth.left {
+    transform: rotate(45deg);
+    border-width: 0 7px 0 0;
+    left: 184px;
+  }
+  .mouth.right {
+    transform: rotate(135deg);
+    border-width: 0 7px 0 0;
+    right: 184px;
+  }
+}
