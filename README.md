@@ -1,4 +1,6 @@
 # bichon-cube
 3d cube reference: https://www.youtube.com/watch?v=NdftnCDwKaU
 
-½ÇÇà URL: https://lazybirdwins.github.io/bichon/
+ì‹¤í–‰ URL: https://lazybirdwins.github.io/bichon/
+
+![preview](https://user-images.githubusercontent.com/112453419/193736021-e2f34685-07ea-4b76-a856-e324e94f691c.gif)
